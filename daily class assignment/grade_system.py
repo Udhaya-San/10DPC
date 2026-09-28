@@ -1,16 +1,40 @@
 students = []
 
 try:
-    num_students = int(input("How many students do you want to enter? "))
+    while True:
+        try:
+            num_students = int(input("How many students do you want to enter? "))
+        except ValueError:
+            print("Invalid input! Please enter a valid number.")
+            continue
+
+        if num_students <= 0:
+            print("Please enter a number greater than 0.")
+            continue
+
+        break
 
     for i in range(num_students):
         print(f"\nStudent {i + 1}")
 
-        name = input("Enter student name: ")
-        marks = float(input("Enter marks (0-100): "))
+        while True:
+            name = input("Enter student name: ")
 
-        if marks < 0 or marks > 100:
-            raise ValueError("Marks must be between 0 and 100")
+            if name.isalpha():
+                break
+
+            print("Invalid name! Please enter alphabets only.")
+        while True:
+            try:
+                marks = float(input("Enter marks (0-100): "))
+
+                if 0 <= marks <= 100:
+                    break
+                else:
+                    print("Marks must be between 0 and 100.")
+
+            except ValueError:
+                print("Invalid input! Please enter a numeric value.")
 
         if marks >= 90:
             grade = "A"
