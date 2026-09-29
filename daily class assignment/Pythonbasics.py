@@ -112,3 +112,22 @@ if experience >= 5:
         print("Performance Rating Too Low")
 else:
     print("Insufficient Experience")
+    
+    
+#Error Handling Example
+try:
+    file = open("marks.txt", "r")
+    data = file.read()
+except FileNotFoundError:
+    print("File not found!")
+else:
+    print("File read successfully:", data)   # runs only if NO error
+finally:
+    print("Program finished.")               # ALWAYS runs
+    
+#FILE MODES
+with open("myfile.txt", "w") as file:
+    file.write("Hello, this is my first file.\n")
+    file.write("Python file handling is easy.")
+
+print("File written successfully!")
